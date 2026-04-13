@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMA Abacus Institute</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div class="ambient ambient-left" aria-hidden="true"></div>
+    <div class="ambient ambient-right" aria-hidden="true"></div>
+
+    <header class="hero">
+      <div class="brand-lockup">
+        <img class="site-logo" src="assets/cma-logo.png" alt="CMA Creating Great Minds logo">
+        <p class="eyebrow">CMA Institute</p>
+        <h1>Abacus Excellence Portal</h1>
+        <p class="hero-copy">
+          A focused training space for National Olympiad preparation with personal access,
+          structured practice, and timed learning sessions.
+        </p>
+      </div>
+    </header>
+
+    <main class="content-card">
+      <section id="loginView" class="view active" aria-labelledby="loginTitle">
+        <div class="section-intro">
+          <p class="section-tag">Secure Login</p>
+          <h2 id="loginTitle">Sign in to your training space</h2>
+          <p>
+            Students can access their personal Mental and Abacus training. Admins can
+            review completed session performance.
+          </p>
+        </div>
+
+        <div class="login-layout">
+          <form id="loginForm" class="login-panel">
+            <label class="field">
+              <span>Student ID / Admin ID</span>
+              <input id="username" name="username" type="text" autocomplete="username" placeholder="Enter student ID or admin ID" required>
+            </label>
+
+            <label class="field">
+              <span>Password</span>
+              <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+            </label>
+
+            <button class="primary-button" type="submit">Log In</button>
+            <p id="loginMessage" class="status-text" role="alert" aria-live="polite"></p>
+          </form>
+
+          <aside class="info-panel">
+            <div class="info-box">
+              <h3>Training Flow</h3>
+              <p>Log in, open your dashboard, and choose the training type assigned to you.</p>
+            </div>
+            <div class="info-box">
+              <h3>Session Timing</h3>
+              <p>Mental sessions run for 2 minutes 30 seconds. Abacus sessions run for 2 minutes.</p>
+            </div>
+            <div class="info-box">
+              <h3>Admin Access</h3>
+              <p>Admin login opens a private performance dashboard for completed student sessions.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="adminView" class="view" aria-labelledby="adminTitle">
+        <div class="dashboard-topbar">
+          <div>
+            <p class="section-tag">Admin Dashboard</p>
+            <h2 id="adminTitle">Student Performance</h2>
+            <p id="adminSummary" class="student-greeting"></p>
+          </div>
+          <div class="admin-actions">
+            <button id="refreshAdminButton" class="secondary-button" type="button">Refresh</button>
+            <button id="adminLogoutButton" class="ghost-button" type="button">Log Out</button>
+          </div>
+        </div>
+
+        <div id="adminStats" class="admin-stats"></div>
+
+        <div class="admin-panel ranking-panel">
+          <div class="ranking-heading">
+            <div>
+              <p class="section-tag">Ranking System</p>
+              <h3>Points, Practice Level and Improvement</h3>
+            </div>
+          </div>
+          <div id="adminRankingList" class="admin-performance-list"></div>
+        </div>
+
+        <div class="admin-panel">
+          <div id="adminPerformanceList" class="admin-performance-list"></div>
+        </div>
+      </section>
+
+      <section id="dashboardView" class="view" aria-labelledby="dashboardTitle">
+        <div class="dashboard-topbar">
+          <div>
+            <p class="section-tag">Student Dashboard</p>
+            <h2 id="dashboardTitle">National Olympiad Training</h2>
+            <p id="studentGreeting" class="student-greeting"></p>
+          </div>
+          <button id="logoutButton" class="ghost-button" type="button">Log Out</button>
+        </div>
+
+        <div id="studentRankPanel" class="student-rank-panel"></div>
+
+        <div class="training-grid">
+          <article class="training-card mental-card">
+            <p class="card-tag">01</p>
+            <h3>Mental</h3>
+            <p>
+              Focused mental arithmetic practice with a 2-minute 30-second timer and a personal
+              placeholder area for future question sets.
+            </p>
+            <div class="card-meta">
+              <span>Time Limit</span>
+              <strong>2 Min 30 Sec</strong>
+            </div>
+            <button class="primary-button" type="button" data-mode="mental">Open Mental Training</button>
+          </article>
+
+          <article class="training-card abacus-card">
+            <p class="card-tag">02</p>
+            <h3>Abacus</h3>
+            <p>
+              Dedicated abacus practice with a 2-minute timer and space reserved for
+              student-specific abacus questions.
+            </p>
+            <div class="card-meta">
+              <span>Time Limit</span>
+              <strong>2 Minutes</strong>
+            </div>
+            <button class="primary-button" type="button" data-mode="abacus">Open Abacus Training</button>
+          </article>
+        </div>
+      </section>
+
+      <section id="trainingView" class="view" aria-labelledby="trainingTitle">
+        <div class="dashboard-topbar">
+          <div>
+            <p class="section-tag">Live Practice Session</p>
+            <h2 id="trainingTitle">National Olympiad Training</h2>
+            <p id="trainingSubtitle" class="student-greeting"></p>
+          </div>
+          <button id="backButton" class="ghost-button" type="button">Back to Dashboard</button>
+        </div>
+
+        <div class="session-layout">
+          <article class="timer-panel">
+            <div class="timer-shell">
+              <p class="timer-label">Session Timer</p>
+              <div id="timerDisplay" class="timer-display" aria-live="polite">02:30</div>
+              <p id="timerStatus" class="timer-status">Ready to begin.</p>
+            </div>
+
+            <div class="timer-actions">
+              <button id="startTimerButton" class="primary-button" type="button">Start Timer</button>
+              <button id="pauseTimerButton" class="secondary-button" type="button">Pause</button>
+              <button id="resetTimerButton" class="ghost-button" type="button">Reset</button>
+            </div>
+          </article>
+
+          <article class="question-panel">
+            <div class="question-box">
+              <p class="question-tag">Question Mode</p>
+              <h3 id="questionTitle">Personal Training Slot</h3>
+              <p id="questionDescription">
+                Questions for this student and mode will be added later.
+              </p>
+              <p id="sessionNote" class="session-note">
+                Start the timer to open the active session.
+              </p>
+              <div id="resultsSummary" class="results-summary" hidden></div>
+            </div>
+
+            <div class="question-box muted-box">
+              <div id="questionList" class="question-list">
+                <div class="empty-state">
+                  Start the timer to load the practice questions for this session.
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
